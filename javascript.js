@@ -35,7 +35,8 @@ const opDown = function(e) {
     firstOperand = currentAnswer;
     displayStr = currentAnswer;
   }
-  currentOperator = e.target.textContent;
+  if (firstOperand !== ``) {currentOperator = e.target.textContent;}
+  else currentOperand += e.target.textContent;
   displayStr += e.target.textContent;
   const display = document.querySelector(`#display`);
   display.textContent = displayStr;
