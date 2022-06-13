@@ -1,14 +1,14 @@
 const add = function(a,b) {
-  return (1 * a) + b;
+  return +a + +b;
 };
 const subtract = function(a,b) {
-	return (1 * a) - b;
+	return +a - +b;
 };
 const multiply = function(a,b) {
-  return (1 * a) * b;
+  return +a * +b;
 };
 const divide = function(a,b) {
-  return (1 * a) / b;
+  return +a / +b;
 };
 const operate = function(o,a,b) {
   if (o == `+`) return add(a,b);
@@ -30,12 +30,12 @@ const opDown = function(e) {
   if (firstOperand == ``) {firstOperand = currentOperand;}
   else {secondOperand = currentOperand;}
   currentOperand = ``;
-  if (currentOperator == ``) {currentOperator = e.target.textContent;}
-  else {
+  if (currentOperator !== ``) {
     const currentAnswer = operate(currentOperator,firstOperand,secondOperand);
     firstOperand = currentAnswer;
     displayStr = currentAnswer;
   }
+  currentOperator = e.target.textContent;
   displayStr += e.target.textContent;
   const display = document.querySelector(`#display`);
   display.textContent = displayStr;
